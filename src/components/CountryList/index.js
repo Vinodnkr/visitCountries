@@ -12,9 +12,7 @@ const CountryList = props => {
     <li className="bg1">
       <p>{name}</p>
       {isVisited ? (
-        <button type="button" disabled>
-          Visited
-        </button>
+        <p>Visited</p>
       ) : (
         <button className="btn" type="button" onClick={handleClick}>
           Visit

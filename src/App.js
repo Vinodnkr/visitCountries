@@ -1,13 +1,9 @@
-// eslint-disable-next-line
-
 import {useState} from 'react'
 
 import CountryList from './components/CountryList'
 import VisitedCountry from './components/VisitedCountry'
 
 import './App.css'
-
-//This is the list (static data) used in the application. You can move it to any component if needed.
 
 const initialCountriesList = [
   {
@@ -83,6 +79,7 @@ const initialCountriesList = [
 ]
 
 // Replace your code here
+
 const App = () => {
   const [countries, setCountries] = useState(initialCountriesList)
   const [visitedCountries, setVisitedCountries] = useState([])
@@ -101,10 +98,11 @@ const App = () => {
     const updatedVisitedCountries = visitedCountries.filter(
       country => country.id !== id,
     )
-    const unVisitedCountry = visitedCountries.find(country => country.id === id)
+
     const updatedCountries = countries.map(country =>
       country.id === id ? {...country, isVisited: false} : country,
     )
+
     setVisitedCountries(updatedVisitedCountries)
     setCountries(updatedCountries)
   }
@@ -118,19 +116,19 @@ const App = () => {
         ))}
       </ul>
       <h1>Visited Countries</h1>
-      <ul>
-        {visitedCountries.length > 0 ? (
-          visitedCountries.map(country => (
+      {visitedCountries.length > 0 ? (
+        <ul>
+          {visitedCountries.map(country => (
             <VisitedCountry
               key={country.id}
               country={country}
               handleRemove={handleRemove}
             />
-          ))
-        ) : (
-          <p>No Visited Countries</p>
-        )}
-      </ul>
+          ))}
+        </ul>
+      ) : (
+        <p>No Countries Visited Yet</p>
+      )}
     </div>
   )
 }
