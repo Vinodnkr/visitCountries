@@ -18,7 +18,7 @@ const VisitedCountry = props => {
   return (
     <li className="bg1">
       <div>
-        <img src={imageUrl} alt="thumbnail" style={{width: '200px'}} />
+        <img src={imageUrl} alt="thumbnail" style={{width: '100px'}} />
       </div>
       <p>{name}</p>
       {isVisited ? (

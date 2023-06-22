@@ -82,7 +82,9 @@ const initialCountriesList = [
 
 const App = () => {
   const [countries, setCountries] = useState(initialCountriesList)
-  const [visitedCountries, setVisitedCountries] = useState([])
+  const [visitedCountries, setVisitedCountries] = useState(
+    initialCountriesList.filter(each => each.isVisited === true),
+  )
 
   const handleVisit = id => {
     const updatedCountries = countries.map(country =>
@@ -116,7 +118,10 @@ const App = () => {
         ))}
       </ul>
       <h1>Visited Countries</h1>
-      {visitedCountries.length > 0 ? (
+
+      {visitedCountries.length === 0 ? (
+        <p>No Countries Visited Yet</p>
+      ) : (
         <ul>
           {visitedCountries.map(country => (
             <VisitedCountry
@@ -126,8 +131,6 @@ const App = () => {
             />
           ))}
         </ul>
-      ) : (
-        <p>No Countries Visited Yet</p>
       )}
     </div>
   )
